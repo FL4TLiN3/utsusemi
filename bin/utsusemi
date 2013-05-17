@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var program = require('commander'),
+    path = require('path'),
+    fs = require('fs'),
+    Utsusemi = require('../'),
+    utsusemi = new Utsusemi();
+
+program
+.version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
+.option('-t, --target [directory]', 'Add the specified directory of stab [./stub/]', './stub/')
+.parse(process.argv);
+
+console.log('  - running Utsusemi with %s', program.target);
+
+utsusemi.add(path.join(process.cwd(), program.target));
+utsusemi.run();
