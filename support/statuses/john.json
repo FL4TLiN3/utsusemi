@@ -8,6 +8,13 @@
             "max": "100"
         }
     },
+    "sex": {
+        "@type": "list",
+        "pattern": [
+            "male",
+            "female"
+        ]
+    },
     "address": {
         "@type": "string",
         "pattern": "alphanumeric",
