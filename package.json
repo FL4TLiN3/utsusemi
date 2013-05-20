@@ -9,7 +9,9 @@
     },
     "devDependencies": {
         "mocha": "*",
-        "chai": "*"
+        "chai": "*",
+        "grunt": "*",
+        "grunt-contrib-connect": "*"
     },
     "main": "./index",
     "bin": {
