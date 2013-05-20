@@ -8,6 +8,13 @@
             "max": "100"
         }
     },
-    "address": "New York"
+    "address": {
+        "@type": "string",
+        "pattern": "alphanumeric",
+        "range": {
+            "min": "10",
+            "max": "100"
+        }
+    }
 }
 
