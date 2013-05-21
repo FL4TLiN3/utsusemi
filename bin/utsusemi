@@ -2,7 +2,8 @@
 
 var program = require('commander'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    util = require('../lib/util');
 
 program
 .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
@@ -14,7 +15,7 @@ program
 program
 .command('start')
 .description('Start Utsusemi Server.')
-.action(function(){
+.action(function() {
     var Utsusemi = require('../'),
         utsusemi = new Utsusemi({
         port: program.port,
@@ -28,8 +29,29 @@ program
 program
 .command('init')
 .description('Initialize Utsusemi Server.')
-.action(function(){
+.action(function() {
     fs.mkdirSync(path.join(process.cwd(), 'stub/'));
+});
+
+program
+.command('add')
+.description('Add Stub.')
+.action(function(url) {
+    var _path = url.split('/'),
+        endpoint = _path.pop(),
+        dirname = path.join('stub'),
+        filename = path.join('stub', url + '.json');
+    if (!fs.existsSync(filename)) {
+        _path.forEach(function(dir) {
+            dirname = path.join(dirname, dir);
+            if (!fs.existsSync(dirname)) {
+                fs.mkdirSync(dirname);
+            }
+        });
+        fs.writeFileSync(filename, '');
+    } else {
+        util.info('%s is already exists.', filename);
+    }
 });
 
 program.parse(process.argv);
