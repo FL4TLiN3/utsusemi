@@ -8,6 +8,7 @@ program
 .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
 .option('-t, --target [directory]', 'Add the specified directory of stab [./stub/]', './stub/')
 .option('-p, --port [number]', 'specify port number [3000]', 3000)
+.option('-n, --hostname [hostname]', 'specify hostname [localhost]', 'localhost')
 .option('-s, --silent', 'suppress messages');
 
 program
@@ -17,10 +18,17 @@ program
     var Utsusemi = require('../'),
         utsusemi = new Utsusemi({
         port: program.port,
+        hostname: program.hostname,
         silent: program.silent || false
     });
     utsusemi.add(path.join(process.cwd(), program.target));
     utsusemi.run();
+});
+
+program
+.command('init')
+.description('Initialize Utsusemi Server.')
+.action(function(){
 });
 
 program.parse(process.argv);
