@@ -15,10 +15,14 @@ describe('Utsusemi', function() {
         done();
     });
 
-    describe('#init', function() {
+    describe('#/status', function() {
 
-        it('init', function(done){
-            done();
+        it('/john.json', function(done){
+            request(utsusemi.app)
+            .get('/statuses/john.json')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200, done);
         });
 
     });
