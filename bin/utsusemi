@@ -30,7 +30,13 @@ program
 .command('init')
 .description('Initialize Utsusemi Server.')
 .action(function() {
-    fs.mkdirSync(path.join(process.cwd(), 'stub/'));
+    var dirname = path.join('stub');
+    if (!fs.existsSync(dirname)) {
+        fs.mkdirSync(dirname);
+        util.info('create %s', dirname);
+    } else {
+        util.info('already initialized.');
+    }
 });
 
 program
@@ -49,6 +55,7 @@ program
             }
         });
         fs.writeFileSync(filename, '');
+        util.info('create %s', filename);
     } else {
         util.info('%s is already exists.', filename);
     }
