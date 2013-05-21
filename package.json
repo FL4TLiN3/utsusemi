@@ -5,6 +5,7 @@
     "dependencies": {
         "underscore": "1.4.3",
         "express": "*",
+        "colors": "*",
         "commander": "*"
     },
     "devDependencies": {
