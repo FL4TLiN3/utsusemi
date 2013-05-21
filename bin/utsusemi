@@ -29,6 +29,7 @@ program
 .command('init')
 .description('Initialize Utsusemi Server.')
 .action(function(){
+    fs.mkdirSync(path.join(process.cwd(), 'stub/'));
 });
 
 program.parse(process.argv);
