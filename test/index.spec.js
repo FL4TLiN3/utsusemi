@@ -5,7 +5,8 @@ var path = require('path'),
 
 var Utsusemi = require('..'),
     utsusemi = new Utsusemi({
-        port: 3002
+        port: 3002,
+        silent: true
     });
 
 describe('Utsusemi', function() {
