@@ -2,16 +2,17 @@
 
 var program = require('commander'),
     path = require('path'),
-    fs = require('fs'),
-    Utsusemi = require('../'),
-    utsusemi = new Utsusemi();
+    fs = require('fs');
 
 program
 .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
 .option('-t, --target [directory]', 'Add the specified directory of stab [./stub/]', './stub/')
+.option('-p, --port [number]', 'specify port number [3000]', 3000)
 .parse(process.argv);
 
-console.log('  - running Utsusemi with %s', program.target);
-
+var Utsusemi = require('../'),
+    utsusemi = new Utsusemi({
+        port: program.port
+    });
 utsusemi.add(path.join(process.cwd(), program.target));
 utsusemi.run();
