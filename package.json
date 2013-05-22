@@ -1,13 +1,25 @@
 {
     "name": "utsusemi",
     "version": "0.0.1",
-    "private": true,
+    "description": "simple but dynamic stub server working on Node.js",
+    "keywords": [
+        "utsusemi",
+        "stub",
+        "mockup",
+        "json"
+    ],
+    "author": "FL4T_LiN3 <lambda.groove@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/FL4TLiN3/utsusemi.git"
+    },
+    "main": "./index",
     "dependencies": {
-        "underscore": "1.4.3",
-        "request": "*",
-        "express": "*",
-        "colors": "*",
-        "commander": "*"
+        "underscore": "1.4.4",
+        "request": "2.21.0",
+        "express": "3.2.5",
+        "colors": "0.6.0-1",
+        "commander": "1.1.1"
     },
     "devDependencies": {
         "mocha": "*",
@@ -18,11 +30,9 @@
     },
     "main": "./index",
     "bin": {
-        "utsusemi": "./bin/utsusemi",
-        "_utsusemi": "./bin/_utsusemi"
+        "utsusemi": "./bin/utsusemi"
     },
     "engines": {
-        "node": ">=0.8.9",
-        "npm": ">=1.1.61"
+        "node": ">=0.3.x"
     }
 }
